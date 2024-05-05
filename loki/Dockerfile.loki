@@ -1,0 +1,24 @@
+# Start from the latest Ubuntu image
+FROM ubuntu:latest
+
+# Install necessary packages
+RUN apt-get update && \
+    apt-get install -y wget
+
+# Download Loki
+RUN wget https://github.com/grafana/loki/releases/download/v2.9.8/loki_2.9.8_amd64.deb
+
+# Make Loki executable
+RUN chmod +x loki_2.9.8_amd64.deb
+
+# Install Loki
+RUN apt-get install ./loki_2.9.8_amd64.deb
+
+# Set the working directory
+WORKDIR /loki
+
+# Copy the Loki configuration file from your local system into the Docker image
+COPY ./loki/loki-local-config.yaml /loki/loki-local-config.yaml
+
+# Use the Loki configuration file
+CMD ["loki", "-config.file=/loki/loki-local-config.yaml"]
