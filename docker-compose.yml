@@ -1,0 +1,14 @@
+version: '3'
+services:
+  grafana:
+    image: mygrafana
+    ports:
+      - 3000:3000
+  loki:
+    image: myloki
+    ports:
+      - 3100:3100
+  logstash:
+    image: mylogstash
+    ports:
+      - 9600:9600
