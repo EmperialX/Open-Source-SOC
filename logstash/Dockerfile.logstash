@@ -1,0 +1,22 @@
+FROM ubuntu:latest
+
+# Install necessary packages and dependencies
+RUN apt-get update && \
+    apt-get install -y wget apt-transport-https gnupg && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Download and install the Public Signing Key
+RUN wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | gpg --dearmor -o /usr/s>
+# Save the repository definition
+RUN echo "deb [signed-by=/usr/share/keyrings/elastic-keyring.gpg] https://artifacts.elastic>
+# Update the list of available packages and install Logstash
+RUN apt-get update && \
+    apt-get install -y logstash
+RUN /usr/share/logstash/bin/logstash-plugin install logstash-output-loki
+# Create Logstash configuration file
+RUN mkdir -p /etc/logstash/conf.d/ && \
+    echo 'input {\n  udp {\n    port => 514\n    type => syslog\n  }\n}\n\noutput {\n  loki>
+EXPOSE 9600
+
+CMD ["/usr/share/logstash/bin/logstash", "-f", "/etc/logstash/conf.d/fortigate.conf"]
