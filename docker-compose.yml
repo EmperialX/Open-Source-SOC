@@ -1,14 +1,32 @@
 version: '3'
 services:
   grafana:
-    image: mygrafana
+    image: grafana/grafana:latest
     ports:
       - 3000:3000
+    networks:
+      - monitoring
+
   loki:
-    image: myloki
+    image: grafana/loki:latest
     ports:
       - 3100:3100
+    networks:
+      - monitoring
+
   logstash:
-    image: mylogstash
+    image: logstash:8.13.4
+    command: >
+      bash -c "bin/logstash-plugin install logstash-output-loki &&
+               bin/logstash -f /usr/share/logstash/pipeline/logstash.conf"
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     ports:
-      - 9600:9600
+      - "514:514/udp"
+    networks:
+      - monitoring
+    restart: always
+
+networks:
+  monitoring:
+    driver: bridge
