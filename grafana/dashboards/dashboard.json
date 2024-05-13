@@ -1,0 +1,1469 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 6,
+  "links": [],
+  "liveNow": true,
+  "panels": [
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "afterRender": "",
+        "content": "<!DOCTYPE html>\n<html>\n\n<body>\n  <center>\n    <img src=\"https://upload.wikimedia.org/wikipedia/en/9/96/National_Forensic_Sciences_University_Logo.png\" alt=\"CoE-CS\" width=\"100\" height=\"118\">\n  </center>\n</body>\n\n</html>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 800,
+          "language": "html"
+        },
+        "editors": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "allRows",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "4.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "{type=\"syslog\"} ",
+          "legendFormat": "{{devname}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 19,
+        "x": 2,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 9,
+          "valueSize": 21
+        },
+        "textMode": "value_and_name",
+        "wideLayout": false
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "sum by(policyname) (count_over_time({type=\"syslog\"} |logfmt | policyname=~\"Bypass URL|COEDF-ITC 6th Floor|Cisco Ctrl|Computer-Labs|Cyber-Staff|Hostels|NFSU-CAMPUS-WIFI|NFSU_Guest|Other-Staff|Server & Network Devices|blocked_Countries|others\" | __error__=`` [1m]))",
+          "legendFormat": "{{d}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Campus Overview (Log Count By Policies) - 1m",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 21,
+        "y": 0
+      },
+      "id": 19,
+      "options": {
+        "afterRender": "",
+        "content": "<!DOCTYPE html>\n<html>\n\n<body>\n  <center>\n    <img src=\"https://raw.githubusercontent.com/CoE-CS/Images/main/CoECS%20logo.png\" width=\"200\" height=\"65\">\n  </center>\n</body>\n\n</html>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "height": 800,
+          "language": "html"
+        },
+        "editors": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "allRows",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "4.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "{type=\"syslog\"} ",
+          "legendFormat": "{{devname}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 3,
+        "y": 3
+      },
+      "id": 16,
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "topk(2, sum by(app) (count_over_time({type=\"syslog\"} | logfmt | app=~\"Acrobat.Cloud|Adobe.Web|Amazon.AWS|Amazon.AWS_S3|Amazon.Ads|Amazon.CloudFront|Amazon.Mobile|Amazon.Services|Amazon.Video|Android|AnyDesk|Apple.Maps|Apple.Push.Notification|Apple.Services|Apple.Store|ArcGIS|Apple.iPhone|Arkoselabs.Captcha|Authd HTTP|Authd HTTPS|Avast.Service|Baidu.Services|BitTorrent|Bitdefender.Service|Bitly|Blogger|Brightcove|Chrome.Remote.Desktop|Clash.Of.Clans|Console Management(SSH)|Console Management(Telnet)|Crashlytics|DHCP/DHCP Relay|DHCP6|DNS|DNS.Over.HTTPS|DNS.Over.TLS|DNS_Dynamic.Update|DTLS|Dell.Service|Discord|Disqus|DotVPN|Dropbox|DuckDuckGo.Search|Duolingo|ESP.UDP|Epic.Games|Facebook|Facebook_Messenger.VoIP.Call|File.Upload.HTTP|Facebook_Video.Play|Firefox.Update|Github|Gmail|Godaddy|Google.Accounts|Google.Ads|Google.Analytics|Google.Calendar|Google.Chat_Video.Call|Google.Data.Saver|Google.Play|Google.Push.Notification|Google.Services|Google.Translate|Grindr|HTTP|HTTP.Audio|HTTP.BROWSER|HTTP.BROWSER_Chrome|HTTP.BROWSER_Edge|HTTP.BROWSER_Firefox|HTTP.BROWSER_IE|HTTP.Download.Accelerator|HTTP.Segmented.Download|HTTPS|HTTPS.BROWSER|Hoxx.VPN|Hubspot|IMAPS|IMDB|ISAKMP|Imo|Instagram|Intel.Services|Jabber|LDAP_UDP|League.Of.Legends|LinkedIn|MMS|MPTCP|MQTT|MS-SQL|MSSQL|Mailchimp|MYSQL|McAfee.Update|Mega|Mendeley|Microsoft.Authentication|Microsoft.Azure|Microsoft.Azure.Application.Insights|Microsoft.CDN|Microsoft.Intune|Microsoft.Office.365|Microsoft.Office.365.Portal|Microsoft.Office.Online|Microsoft.Office.Update|Microsoft.OneNote|Microsoft.Outlook|Microsoft.Outlook.Office.365|Microsoft.Portal|Microsoft.Product.Activation|Microsoft.SharePoint|Microsoft.Store|Microsoft.Teams|Microsoft.Windows.Update|Mobile.Legends|Monero.Cryptocurrency.Miner|Moodle|NTP|NetBIOS.Name.Service|Netflix|OCSP|OneDrive|OpenAI.ChatGPT|Opera.Turbo|PING|POP3S|PayPal|Ping|Pinterest|Proxy.HTTP|QUIC|QuickHeal.Update|Quora|RADIUS|Reddit|Riot.Games|Root.Certificate.URL|SAP.Concur|SIP|SMTP|SMTPS|SNMP_GetRequest|SQUID|SSL|SSL_TLSv1.0|SSL_TLSv1.1|SSL_TLSv1.2|SSL_TLSv1.3|STUN|Salesforce|Samsung.Cloud|Scribd|Shazam|Shopify|Skype|Skype.Portals|Slack|Slideshare|Snapchat|SolarWinds|Speedtest|Spotify|Steam|TCO-8080|TeamViewer|Telegram|Tencent.Services|Teredo|Thunder.VPN|TikTok|Tor|Trace.Route|Truecaller|Tumblr|Twilio|Twitter|Uber|UltraViewer|UserVoice|VLC|Viber|Vimeo|Wattpad|WeChat|Web Management|Web Management(HTTPS)|WebEx|WhatsApp|WhatsApp_File.Transfer|WhatsApp_VoIP.Call|WhatsApp_Web|Wikipedia|Windows.Push.Notification|Xbox|YY.Voice|Yahoo.Accounts|Yahoo.Finance|Yahoo.Mail|Yahoo.Search|Yahoo.Services|Yandex|YouTube|Zendesk|Zoom|iCloud|netbios forward\" | __error__!=\"LogfmtParserErr\" [$__auto])))",
+          "legendFormat": "{{app}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "App Services - Auto",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 9,
+        "x": 11,
+        "y": 3
+      },
+      "id": 12,
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 45,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "text": {
+          "titleSize": 14,
+          "valueSize": 20
+        },
+        "valueMode": "text"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "topk(3, sum by(msg, srcip) (count_over_time({type=\"syslog\"} | logfmt | action =~ `block|blocked` | __error__=`` [5m])))",
+          "legendFormat": "{{msg}}-{{srcip}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Recent Block Activity - 5m",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "decimals": 1,
+          "fieldMinMax": true,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 4,
+        "x": 20,
+        "y": 3
+      },
+      "id": 17,
+      "maxDataPoints": 20,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "editorMode": "code",
+          "expr": "sum by(service) (count_over_time({type=\"syslog\"} | logfmt | service=~\"NetBIOS|SMB|SSH|MYSQL|RDP|FTP|POP3|SMTP|DHCP|KERBEROS|RLOGIN|NESSUS|TELNET\"| __error__=`` [30s]))",
+          "instant": false,
+          "legendFormat": "{{service}} ",
+          "queryType": "range",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Ports - 1m",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "dark-green",
+                "value": null
+              },
+              {
+                "color": "semi-dark-green",
+                "value": 100
+              },
+              {
+                "color": "red",
+                "value": 125
+              },
+              {
+                "color": "dark-red",
+                "value": 150
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 0,
+        "y": 4
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "icon": "none",
+        "iconPosition": "content",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "prefix": "",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "subtitle": "",
+        "suffix": "",
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "1.2.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "sum by(apprisk) (count_over_time({type=\"syslog\"} | logfmt | apprisk =~ `high` | __error__=`` [15s]))",
+          "legendFormat": "{{apprisk}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Service Risk - 1m",
+      "transparent": true,
+      "type": "orchestracities-iconstat-panel"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 3,
+        "x": 0,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "topk(3, sum by(dstport, logid) (count_over_time({type=\"syslog\"} | logfmt | type_extracted=\"utm\" |__error__=`` [1s])))",
+          "legendFormat": "{{dstport}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Ongoing Ports - 1m",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#96D98D",
+                "value": null
+              },
+              {
+                "color": "#73BF69",
+                "value": 500
+              },
+              {
+                "color": "semi-dark-red",
+                "value": 5000
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 13,
+        "w": 9,
+        "x": 3,
+        "y": 9
+      },
+      "id": 14,
+      "maxDataPoints": 1,
+      "options": {
+        "basemap": {
+          "config": {
+            "showLabels": true,
+            "theme": "dark"
+          },
+          "name": "Layer 0",
+          "opacity": 1,
+          "type": "carto"
+        },
+        "controls": {
+          "mouseWheelZoom": false,
+          "showAttribution": true,
+          "showDebug": false,
+          "showMeasure": false,
+          "showScale": false,
+          "showZoom": true
+        },
+        "layers": [
+          {
+            "config": {
+              "blur": 10,
+              "radius": 10,
+              "weight": {
+                "fixed": 1,
+                "max": 1,
+                "min": 0
+              }
+            },
+            "filterData": {
+              "id": "byRefId",
+              "options": "A"
+            },
+            "location": {
+              "gazetteer": "public/gazetteer/countries.json",
+              "lookup": "Field",
+              "mode": "lookup"
+            },
+            "name": "Layer 1",
+            "opacity": 1,
+            "tooltip": false,
+            "type": "heatmap"
+          }
+        ],
+        "tooltip": {
+          "mode": "details"
+        },
+        "view": {
+          "allLayers": true,
+          "id": "zero",
+          "lat": 0,
+          "lon": 0,
+          "shared": false,
+          "zoom": 2
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "expr": "sum by (dstcountry) (count_over_time({type=~\"syslog\"} | logfmt | dstcountry != \"\" | __error__=\"\" [$__interval]))",
+          "instant": false,
+          "legendFormat": "{{geoip_country_code}}",
+          "queryType": "range",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Logs From Nations",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "reducers": [
+              "sum"
+            ]
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "geomap"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 12,
+        "y": 9
+      },
+      "id": 2,
+      "options": {
+        "displayLabels": [
+          "percent",
+          "name"
+        ],
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false,
+          "values": []
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.2.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+          },
+          "editorMode": "code",
+          "expr": "sum by(osname) (count_over_time({type=\"syslog\"} | logfmt | osname=~\"Android|Windows|iOS|iPadOS|macOS\"|  __error__!=\"LogfmtParserErr\"[1m]))",
+          "legendFormat": "{{srcip}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Identified OS - 1m",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 15,
+        "y": 9
+      },
+      "id": 15,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 300,
+        "minVizHeight": 43,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "manual",
+        "text": {
+          "titleSize": 13,
+          "valueSize": 19
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "sum by(attack, srcip, dstip, user) (count_over_time({type=\"syslog\"} | logfmt | subtype=\"ips\" [3h]))",
+          "legendFormat": "{{attack}} _ {{dstip}} _ {{scrip}} _ {{user}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Malicious Event - 3h",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 17
+      },
+      "id": 13,
+      "options": {
+        "minVizHeight": 200,
+        "minVizWidth": 200,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto",
+        "text": {
+          "titleSize": 12,
+          "valueSize": 19
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "topk(1, sum by(srcip) (count_over_time({type=\"syslog\"} | logfmt | action =~ `deny` | __error__=`` [1m])))",
+          "legendFormat": "{{srcip}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Denied Request - 1m",
+      "transparent": true,
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 9,
+        "x": 0,
+        "y": 22
+      },
+      "id": 7,
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "namePlacement": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "text": {
+          "titleSize": 15,
+          "valueSize": 20
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "sum by(devtype) (count_over_time({type=\"syslog\"} | logfmt | devtype =~ `Computer|Home & Office|Laptop|Mobile|Mobile Generic|Phone|Tablet|Printer|Proxy Server|Router|Server` [5m]))",
+          "legendFormat": "{{devname}}",
+          "queryType": "range",
+          "refId": "A",
+          "step": ""
+        }
+      ],
+      "title": "Logs by Devices - 5m",
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 22
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false
+        },
+        "timezone": [
+          "browser"
+        ],
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "syslog",
+            "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+          },
+          "editorMode": "code",
+          "expand": true,
+          "expr": "count_over_time({type=\"syslog\"} |= ``[15m])",
+          "format": 0,
+          "meta": {
+            "builderOptions": {
+              "fields": [],
+              "limit": 100,
+              "mode": "list"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT arrayJoin(ruleActions) as ruleAction,\ncount(),\n$__timeInterval(timestamp) as time\nFROM ${table}\nWHERE $__timeFilter(timestamp)\nAND $__conditionalAll(host IN (${host:sqlstring}), $host)\nAND $__conditionalAll(method IN (${method:sqlstring}), $method)\nAND $__conditionalAll(status IN (${status:sqlstring}), $status)\nAND $__conditionalAll(country IN (${country:sqlstring}), $country)\nAND $__conditionalAll(clientIP IN (${clientIP:sqlstring}), $clientIP)\nAND $__conditionalAll(path IN (${path:sqlstring}), $path)\nAND $__conditionalAll(hasAll(ruleTags, arrayPopBack([${tags}])), $tags)\nAND $__conditionalAll(has(ruleActions, '${ruleActions}'), $ruleActions)\nAND if ('${requestHeadersName:text}' = '', true, mapContainsKeyLike(requestHeaders, '%${requestHeadersName:text}%'))\nAND if ('${responseHeadersName:text}' = '', true, mapContainsKeyLike(responseHeaders, '%${responseHeadersName:text}%'))\n\n\nGROUP BY time, ruleAction\nORDER BY time",
+          "refId": "A",
+          "selectedFormat": 0
+        }
+      ],
+      "title": "SIEM Logs Count",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "semi-dark-blue",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 2,
+        "x": 22,
+        "y": 27
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "builder",
+          "expr": "sum(bytes_over_time({type=\"syslog\"} | logfmt | __error__=`` [$__range]))",
+          "legendFormat": "Packets",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Packets - One Cluster",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 9,
+        "x": 0,
+        "y": 28
+      },
+      "id": 5,
+      "maxDataPoints": 20,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 7,
+        "showHeader": true
+      },
+      "pluginVersion": "10.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "editorMode": "code",
+          "expr": "topk(1, sum by(dstip, dstcountry) (count_over_time({type=~\"syslog\"} | logfmt | __error__=`` [1m])))",
+          "instant": false,
+          "legendFormat": "{{dstcountry}}-{{dstip}}",
+          "queryType": "range",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": "5m",
+      "title": "Requests per status code",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 3,
+        "x": 0,
+        "y": 33
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "fffcb593-397c-4561-9497-3fffddf5a24c"
+          },
+          "editorMode": "code",
+          "expr": "sum by(dstcountry) (count_over_time({type=\"syslog\"} | logfmt | type_extracted = `utm` [1m]))",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Destination Sources ",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 2,
+        "x": 22,
+        "y": 33
+      },
+      "hideTimeOverride": false,
+      "id": 4,
+      "maxDataPoints": 300,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "icon": "none",
+        "iconPosition": "content",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "prefix": "",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "subtitle": "",
+        "suffix": "",
+        "text": {
+          "titleSize": 44
+        },
+        "textMode": "value"
+      },
+      "pluginVersion": "1.2.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "c49beaaa-5eb1-48a0-a284-bc0b21bdcc00"
+          },
+          "editorMode": "code",
+          "expr": "sum by(devid) (count_over_time({type=~\"syslog\"} | logfmt | __error__!=\"LogfmtParserErr\" [$__interval]))  ",
+          "legendFormat": "",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": "1h",
+      "title": "Logs",
+      "transparent": true,
+      "type": "orchestracities-iconstat-panel"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "NFSU_FW Copy",
+  "uid": "fc77ef7f-bda0-447e-857b-59aa7d927680",
+  "version": 175,
+  "weekStart": ""
+}
