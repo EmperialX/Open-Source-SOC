@@ -6,6 +6,8 @@ services:
       - 3000:3000
     networks:
       - monitoring
+    depends_on:
+      - loki
 
   loki:
     image: grafana/loki:latest
@@ -13,6 +15,8 @@ services:
       - 3100:3100
     networks:
       - monitoring
+    depends_on:
+      - logstash
 
   logstash:
     image: logstash:8.13.4
@@ -30,3 +34,5 @@ services:
 networks:
   monitoring:
     driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "0.0.0.0"
