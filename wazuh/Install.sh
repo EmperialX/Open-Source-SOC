@@ -1,4 +1,5 @@
 #!/bin/bash
+
 PROJECT_DIR="wazuh-docker"
 GIT_URL="https://github.com/wazuh/wazuh-docker.git"
 BRANCH="v4.7.4"
@@ -26,8 +27,8 @@ docker-compose -f generate-indexer-certs.yml run --rm generator && \
 echo "Certificate generation successful." || \
 { echo "Certificate generation failed. Exiting."; exit 1; }
 echo "Modifying Docker Compose file..."
-sed -i 's/443:443/5500:5500/g' docker-compose.yml && \
 sed -i 's/9200:9200/9203:9203/g' docker-compose.yml && \
+sed -i 's/443:5601/5500:5601/g' docker-compose.yml && \
 echo "Docker Compose file modified successfully." || \
 { echo "Failed to modify Docker Compose file. Exiting."; exit 1; }
 echo "Starting Docker Compose services..."
