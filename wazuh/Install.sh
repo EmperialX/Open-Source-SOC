@@ -1,0 +1,36 @@
+#!/bin/bash
+PROJECT_DIR="wazuh-docker"
+GIT_URL="https://github.com/wazuh/wazuh-docker.git"
+BRANCH="v4.7.4"
+if [ ! -d "$PROJECT_DIR" ]; then
+    echo "Cloning the Wazuh Docker project..."
+    git clone "$GIT_URL" -b "$BRANCH" && \
+    echo "Cloning successful." || \
+    { echo "Cloning failed. Exiting."; exit 1; }
+else
+    echo "Project directory already exists. Skipping clone."
+fi
+echo "Removing unwanted files and folders..."
+rm -rf "$PROJECT_DIR/build-docker-images/" \
+       "$PROJECT_DIR/CHANGELOG.md" \
+       "$PROJECT_DIR/indexer-certs-creator/" \
+       "$PROJECT_DIR/LICENSE" \
+       "$PROJECT_DIR/multi-node/" \
+       "$PROJECT_DIR/README.md" \
+       "$PROJECT_DIR/VERSION" && \
+echo "Cleanup successful." || \
+{ echo "Cleanup failed. Exiting."; exit 1; }
+cd "$PROJECT_DIR/single-node" && \
+echo "Generating indexer certificates..."
+docker-compose -f generate-indexer-certs.yml run --rm generator && \
+echo "Certificate generation successful." || \
+{ echo "Certificate generation failed. Exiting."; exit 1; }
+echo "Modifying Docker Compose file..."
+sed -i 's/443:443/5500:443/g' docker-compose.yml && \
+sed -i 's/9200:9200/9203:9203/g' docker-compose.yml && \
+echo "Docker Compose file modified successfully." || \
+{ echo "Failed to modify Docker Compose file. Exiting."; exit 1; }
+echo "Starting Docker Compose services..."
+docker-compose up -d && \
+echo "Docker Compose services started successfully." || \
+{ echo "Failed to start Docker Compose services. Exiting."; exit 1; }
