@@ -31,6 +31,10 @@ sed -i 's/9200:9200/9203:9203/g' docker-compose.yml && \
 sed -i 's/443:5601/5500:5601/g' docker-compose.yml && \
 echo "Docker Compose file modified successfully." || \
 { echo "Failed to modify Docker Compose file. Exiting."; exit 1; }
+echo "Setting vm.max_map_count parameter..."
+sysctl -w vm.max_map_count=262144 && \
+echo "vm.max_map_count parameter set successfully." || \
+{ echo "Failed to set vm.max_map_count parameter. Exiting."; exit 1; }
 echo "Starting Docker Compose services..."
 docker-compose up -d && \
 echo "Docker Compose services started successfully." || \
